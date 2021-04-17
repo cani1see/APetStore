@@ -4,6 +4,8 @@ import { FocusAwareStatusBar as StatusBar } from '../components/common/FocusAwar
 import { SearchBar } from '../components/business/SearchBar';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
+import { MyCarousel } from '../components/business/MyCarousel';
+import { DailyDiscount } from '../components/business/DailyDiscount';
 
 export function ShopScreen() {
   const navigation = useNavigation();
@@ -15,6 +17,8 @@ export function ShopScreen() {
       <StatusBar barStyle={'dark-content'} backgroundColor={'white'} />
       <View style={styles.container}>
         <SearchBar placeholder="冻干猫粮" toCart={toSearch} />
+        <MyCarousel />
+        <DailyDiscount />
       </View>
     </SafeAreaView>
   );
