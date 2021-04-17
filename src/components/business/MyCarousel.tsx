@@ -21,7 +21,7 @@ const _renderItem = ({ item }: any) => {
 export const MyCarousel: React.FC = ({}) => {
   const [activeSlide, SetActiveSlide] = useState(0);
   return (
-    <>
+    <View style={{ height: (global.windowWidth - 30) / 3 + 16 }}>
       <Carousel
         data={entries}
         autoplay={global.isIOS}
@@ -41,7 +41,7 @@ export const MyCarousel: React.FC = ({}) => {
         inactiveDotOpacity={1}
         inactiveDotScale={1}
       />
-    </>
+    </View>
   );
 };
 
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
   carouselCard: {
     marginHorizontal: 15,
     width: global.windowWidth - 30,
+    height: (global.windowWidth - 30) / 3,
     aspectRatio: 3,
     backgroundColor: 'cyan',
     borderRadius: 30,
