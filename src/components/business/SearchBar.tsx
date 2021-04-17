@@ -3,17 +3,22 @@ import React, { useState } from 'react';
 
 type Props = {
   onSearch?: Function;
+  toCart?: () => any;
   placeholder?: string;
 };
 
 export const SearchBar: React.FC<Props> = ({
   onSearch,
+  toCart,
   placeholder,
 }: Props) => {
   const [query, setQuery] = useState('');
   const onSearchPress = () => typeof onSearch === 'function' && onSearch(query);
   return (
     <View style={styles.container}>
+      {typeof toCart === 'function' && (
+        <TouchableOpacity onPress={toCart} style={styles.cart} />
+      )}
       <TextInput
         underlineColorAndroid="transparent"
         style={styles.input}
@@ -53,6 +58,12 @@ const styles = StyleSheet.create({
     top: 10,
     bottom: 10,
     width: 24,
+    backgroundColor: 'yellow',
+  },
+  cart: {
+    width: 32,
+    height: 32,
+    marginRight: 10,
     backgroundColor: 'yellow',
   },
 });
