@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { SearchBar } from '../components/business/SearchBar';
 import { FocusAwareStatusBar as StatusBar } from '../components/common/FocusAwareStatusBar';
 import { MyCarousel } from '../components/business/MyCarousel';
@@ -12,6 +12,7 @@ import { CommunityPostList } from '../components/business/CommunityPostList';
 export function CommunityScreen() {
   const navigation = useNavigation();
   const [headerHeight, setHeaderHeight] = useState(300);
+  const insets = useSafeAreaInsets();
   const toSearch = useCallback(() => navigation.navigate('Search'), [
     navigation,
   ]);
@@ -30,19 +31,25 @@ export function CommunityScreen() {
     // eslint-disable-next-line
   }, []);
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <View style={{ paddingTop: insets.top, flex: 1 }}>
       <StatusBar barStyle={'dark-content'} backgroundColor={'white'} />
       <ScrollTabView
         headerHeight={headerHeight}
+        tabBarUnderlineStyle={styles.tabBarUnderlineStyle}
         renderScrollHeader={_renderScrollHeader}>
         <CommunityPostList tabLabel="为你推荐" />
         <CommunityPostList tabLabel="今日最佳" />
         <CommunityPostList tabLabel="每月排行" />
       </ScrollTabView>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
+  tabBarUnderlineStyle: {
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#8CD1E6',
+  },
 });
