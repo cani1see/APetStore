@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { SearchBar } from '../components/SearchBar';
+import { SearchBar } from '../components/business/SearchBar';
+import { FocusAwareStatusBar as StatusBar } from '../components/common/FocusAwareStatusBar';
 
 export function CommunityScreen() {
   const navigation = useNavigation();
