@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-scroll-head-tab-view/components/DefaultTabBar.tsx b/node_modules/react-native-scroll-head-tab-view/components/DefaultTabBar.tsx
+index 7482000..24e5507 100644
+--- a/node_modules/react-native-scroll-head-tab-view/components/DefaultTabBar.tsx
++++ b/node_modules/react-native-scroll-head-tab-view/components/DefaultTabBar.tsx
+@@ -108,7 +108,7 @@ export default class DefaultTabBar extends Component<Props> {
+                 style={[
+                     tabUnderlineStyle,
+                     {
+-                        transform: [{ translateX }, { scaleX }],
++                        transform: [{ translateX },{ translateY:-12 }, { scaleX }],
+                     },
+                 ]}
+             />
