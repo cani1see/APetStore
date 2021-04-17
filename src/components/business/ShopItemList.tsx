@@ -4,11 +4,12 @@ import React from 'react';
 
 const ListData = new Array(20).fill({});
 
-export function CommunityPostList(props) {
+export function ShopItemList(props) {
   // eslint-disable-next-line
   const renderItem = ({ item, index }) => {
     return (
-      <View style={styles.cardShadow}>
+      <View
+        style={[styles.cardShadow, index % 2 === 0 ? { marginLeft: 10 } : {}]}>
         <View style={styles.card}>
           <View style={styles.postImage} />
           <View style={styles.contentContainer}>
@@ -23,13 +24,24 @@ export function CommunityPostList(props) {
                 <View style={styles.likeIcon} />
               </View>
             </View>
-            <Text style={styles.title}>怎么今天看起来特别的有精神？？？</Text>
+            {index % 2 === 0 ? (
+              <Text style={styles.title}>怎么今天看起来</Text>
+            ) : (
+              <Text style={styles.title}>怎么今天看起来特别的有精神？？？</Text>
+            )}
           </View>
         </View>
       </View>
     );
   };
-  return <FlatList {...props} data={ListData} renderItem={renderItem} />;
+  return (
+    <FlatList
+      {...props}
+      data={ListData}
+      renderItem={renderItem}
+      numColumns={2}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
@@ -45,14 +57,12 @@ const styles = StyleSheet.create({
 
     backgroundColor: 'white',
     padding: 0,
-    marginHorizontal: 15,
+    marginHorizontal: 5,
     marginVertical: 5,
     borderRadius: 30,
   },
   card: {
-    width: global.windowWidth - 30,
-    height: undefined,
-    aspectRatio: 360 / 269,
+    width: (global.windowWidth - 30) / 2,
     borderRadius: 30,
     overflow: 'hidden',
     backgroundColor: 'white',
@@ -60,7 +70,7 @@ const styles = StyleSheet.create({
   postImage: {
     backgroundColor: 'orange',
     height: undefined,
-    aspectRatio: 360 / 200,
+    aspectRatio: 1,
   },
   contentContainer: {
     flex: 1,
