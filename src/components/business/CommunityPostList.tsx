@@ -1,20 +1,20 @@
 import { Text, View, StyleSheet } from 'react-native';
-import { FlatList } from 'react-native-scroll-head-tab-view/index';
 import React from 'react';
 
-const ListData = new Array(20).fill({});
-
-export function CommunityPostList(props) {
-  // eslint-disable-next-line
-  const renderItem = ({ item, index }) => {
-    return (
+export const CommunityPostListRenderItem = ({item, index}) => {
+  return (
+    <View
+      style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
       <View style={styles.cardShadow}>
         <View style={styles.card}>
           <View style={styles.postImage} />
           <View style={styles.contentContainer}>
             <View style={styles.firstLine}>
               <View>
-                <Text style={{ color: '#222222', fontSize: 12 }}>
+                <Text style={{color: '#222222', fontSize: 12}}>
                   大龄铲屎官...
                 </Text>
               </View>
@@ -27,10 +27,9 @@ export function CommunityPostList(props) {
           </View>
         </View>
       </View>
-    );
-  };
-  return <FlatList {...props} data={ListData} renderItem={renderItem} />;
-}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   cardShadow: {

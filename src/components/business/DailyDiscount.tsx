@@ -41,7 +41,7 @@ const _renderItem = ({ item: itemTime3 }) => {
       {/* eslint-disable-next-line */}
       {itemTime3.map(item => {
         return (
-          <View style={styles.discountItem}>
+          <View key={item.id} style={styles.discountItem}>
             <View style={styles.itemImageContainer}>
               <View style={styles.priceWrap}>
                 <Text style={styles.price}>￥59</Text>

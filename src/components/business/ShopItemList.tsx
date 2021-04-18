@@ -1,48 +1,35 @@
 import { Text, View, StyleSheet } from 'react-native';
-import { FlatList } from 'react-native-scroll-head-tab-view/index';
 import React from 'react';
 
 const ListData = new Array(20).fill({});
 
-export function ShopItemList(props) {
-  // eslint-disable-next-line
-  const renderItem = ({ item, index }) => {
-    return (
-      <View
-        style={[styles.cardShadow, index % 2 === 0 ? { marginLeft: 10 } : {}]}>
-        <View style={styles.card}>
-          <View style={styles.postImage} />
-          <View style={styles.contentContainer}>
-            <View style={styles.firstLine}>
-              <View>
-                <Text style={{ color: '#222222', fontSize: 12 }}>
-                  大龄铲屎官...
-                </Text>
-              </View>
-              <View style={styles.likesWrap}>
-                <Text style={styles.likes}>124 赞</Text>
-                <View style={styles.likeIcon} />
-              </View>
+export const ShopItemListRenderer = (item) => {
+  return (
+    <View style={[styles.cardShadow]}>
+      <View style={styles.card}>
+        <View style={styles.postImage} />
+        <View style={styles.contentContainer}>
+          <View style={styles.firstLine}>
+            <View>
+              <Text style={{ color: '#222222', fontSize: 12 }}>
+                大龄铲屎官...
+              </Text>
             </View>
-            {index % 2 === 0 ? (
-              <Text style={styles.title}>怎么今天看起来</Text>
-            ) : (
-              <Text style={styles.title}>怎么今天看起来特别的有精神？？？</Text>
-            )}
+            <View style={styles.likesWrap}>
+              <Text style={styles.likes}>124 赞</Text>
+              <View style={styles.likeIcon} />
+            </View>
           </View>
+          {item.id % 2 === 0 ? (
+            <Text style={styles.title}>怎么今天看起来</Text>
+          ) : (
+            <Text style={styles.title}>怎么今天看起来特别的有精神？？？</Text>
+          )}
         </View>
       </View>
-    );
-  };
-  return (
-    <FlatList
-      {...props}
-      data={ListData}
-      renderItem={renderItem}
-      numColumns={2}
-    />
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   cardShadow: {
@@ -54,8 +41,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowColor: '#000000',
     shadowRadius: 20,
-
-    backgroundColor: 'white',
     padding: 0,
     marginHorizontal: 5,
     marginVertical: 5,

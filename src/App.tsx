@@ -3,8 +3,8 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { RootStackParamList } from './types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { CommunityScreen } from './pages/CommunityScreen';
-import { ShopScreen } from './pages/ShopScreen';
+import { CommunityScreen } from './pages/CommunityScreen/CommunityScreen';
+import { ShopScreen } from './pages/ShopScreen/ShopScreen';
 import { MessageScreen } from './pages/MessageScreen';
 import { UserScreen } from './pages/UserScreen';
 import { SearchScreen } from './pages/SearchScreen';
@@ -27,7 +27,12 @@ const AppTheme = {
 };
 
 const HomeTabs = () => (
-  <RootTab.Navigator>
+  <RootTab.Navigator
+    backBehavior={'initialRoute'}
+    tabBarOptions={{
+      allowFontScaling: false,
+      keyboardHidesTabBar: true,
+    }}>
     <RootTab.Screen name="社区" component={CommunityScreen} />
     <RootTab.Screen name="商城" component={ShopScreen} />
     <RootTab.Screen name="消息" component={MessageScreen} />
